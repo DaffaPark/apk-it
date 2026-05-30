@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class InsidenSiber extends Model
 {
+    protected $table = 'insiden_sibers';
+
     protected $fillable = [
         'jenis_serangan',
         'sumber_ip',
@@ -13,7 +15,6 @@ class InsidenSiber extends Model
         'severity',
         'status',
         'tiket_id',
-        'detected_at',
         'resolved_at',
     ];
 

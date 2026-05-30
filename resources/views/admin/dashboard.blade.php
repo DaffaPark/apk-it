@@ -62,6 +62,27 @@
                 </div>
             </div>
 
+            <!-- Jadwal Mendatang -->
+            @if(isset($jadwalMendatang) && $jadwalMendatang->count() > 0)
+            <div class="bg-white overflow-hidden shadow rounded-lg p-6 mt-6">
+                <h3 class="text-lg font-semibold mb-4">Jadwal Pemeliharaan Mendatang</h3>
+                <ul class="space-y-2">
+                    @foreach($jadwalMendatang as $jadwal)
+                    <li class="flex justify-between text-sm">
+                        <span>{{ $jadwal->nama }}</span>
+                        <span class="text-gray-500">{{ $jadwal->tanggal_mulai->format('d/m/Y') }}</span>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            @if($overdue > 0)
+            <div class="bg-red-100 text-red-800 p-4 rounded mb-4">
+                ⚠️ {{ $overdue }} tiket melewati SLA deadline! <a href="{{ route('admin.tikets.index', ['status' => 'open']) }}" class="underline">Lihat</a>
+            </div>
+            @endif
+
             <!-- Tabel Tiket Terbaru -->
             <div class="bg-white overflow-hidden shadow rounded-lg">
                 <div class="p-6">

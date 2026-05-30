@@ -4,14 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Traits\Loggable;
 
 class Tiket extends Model
 {
+    use Loggable;
     protected $fillable = [
         'kode_unik',
         'pelapor_id',
         'pelapor_nama',
         'pelapor_unit',
+        'pelapor_email',
         'keluhan',
         'penyebab',
         'solusi',
@@ -37,7 +40,22 @@ class Tiket extends Model
     {
         static::creating(function ($tiket) {
             $tiket->kode_unik = (string) Str::uuid();
+            
+            // Hitung SLA deadline berdasarkan prioritas
+            $slaHours = match ($tiket->prioritas) {
+                'low'      => 24,
+                'medium'   => 12,
+                'high'     => 4,
+                'critical' => 1,
+                default    => 24,
+            };
+            $tiket->sla_deadline = now()->addHours($slaHours);
         });
+    }
+
+    public function insiden()
+    {
+        return $this->hasOne(InsidenSiber::class, 'tiket_id');
     }
 
     public function pelapor()

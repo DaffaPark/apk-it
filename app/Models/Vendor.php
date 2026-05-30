@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Vendor extends Model
 {
+    use Loggable;
     protected $fillable = [
         'nama_vendor',
         'kontak',

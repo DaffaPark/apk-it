@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 
 class JadwalPelaksanaan extends Model
 {
+    use Loggable;
     protected $fillable = [
         'jadwal_pemeliharaan_id',
         'teknisi_id',

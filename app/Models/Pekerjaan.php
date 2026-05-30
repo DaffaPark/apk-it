@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Pekerjaan extends Model
 {
+    use Loggable;
     protected $fillable = [
         'judul',
         'deskripsi',

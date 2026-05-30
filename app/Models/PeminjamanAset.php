@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 
 class PeminjamanAset extends Model
 {
+    use Loggable;
     protected $fillable = [
         'inventaris_id',
         'peminjam_id',

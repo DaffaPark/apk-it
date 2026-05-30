@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 
 class InventarisRiwayat extends Model
 {
+    use Loggable;
     public $timestamps = false;
     protected $fillable = [
         'inventaris_id',

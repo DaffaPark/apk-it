@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 
 class MaintenanceWindow extends Model
 {
+    use Loggable;
     protected $fillable = [
         'nama',
         'mulai',

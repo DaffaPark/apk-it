@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class InsidenLog extends Model
 {
+    protected $table = 'insiden_logs';
     public $timestamps = false;
+
     protected $fillable = [
         'insiden_siber_id',
         'user_id',

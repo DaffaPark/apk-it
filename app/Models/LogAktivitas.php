@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 
 class LogAktivitas extends Model
 {
+    use Loggable;
+    protected $table = 'log_aktivitas';
     public $timestamps = false;
+
     protected $fillable = [
         'user_id',
         'aksi',
